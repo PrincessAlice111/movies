@@ -21,4 +21,24 @@ public class MovieServiceImpl implements MovieService {
     public Optional<Movie> getMovieById(Long id) {
         return movieRepository.findById(id);
     }
+
+    @Override
+    public Movie createMovie(Movie movie) {
+        return movieRepository.save(movie);
+    }
+
+    @Override
+    public Movie updateMovie(Long id, Movie movie) {
+        if (movieRepository.existsById(id)) {
+            movie.setId(id);
+            return movieRepository.save(movie);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public void deleteMovie(Long id) {
+        movieRepository.deleteById(id);
+    }
 }

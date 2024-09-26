@@ -1,30 +1,37 @@
 package com.example.movies.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "movie")
 public class Movie {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "title")
     private String title;
-    private int year;
+
+    @Column(name = "year")
+    private Long year;
+
+    @Column(name = "director")
     private String director;
+
+    @Column(name = "genre")
     private String genre;
+
+    @Column(name = "synopsis")
     private String synopsis;
 
-    public Movie(
-            int id,
-            String title,
-            int year,
-            String director,
-            String genre,
-            String synopsis) {
-        this.id = id;
-        this.title = title;
-        this.year = year;
-        this.director = director;
-        this.genre = genre;
-        this.synopsis = synopsis;
-    }
-
     // Getters.
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -32,7 +39,7 @@ public class Movie {
         return title;
     }
 
-    public int getYear() {
+    public Long getYear() {
         return year;
     }
 
@@ -46,5 +53,30 @@ public class Movie {
 
     public String getSynopsis() {
         return synopsis;
+    }
+
+    // Setters.
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setYear(Long year) {
+        this.year = year;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
     }
 }
